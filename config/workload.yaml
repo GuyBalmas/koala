@@ -1,0 +1,30 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: lazy-koala
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    apps.tanzu.vmware.com/has-tests: "true"
+    app.kubernetes.io/part-of: lazy-koala
+spec:
+  env:
+  - name: GREETING_MSG
+    value: I'm a lazy Koala
+  - name: GREETING_DESC
+    value: I eat eucalyptus leaves all day
+  - name: BP_JVM_VERSION
+    value: "11"
+  params:
+  - name: annotations
+    value:
+      autoscaling.knative.dev/minScale: "1"
+  - name: testing_pipeline_matching_labels
+    value:
+      apps.tanzu.vmware.com/framework: maven
+      apps.tanzu.vmware.com/pipeline: test
+  source:
+    git:
+      ref:
+        branch: main
+      url: https://github.com/vmware-tanzu/application-accelerator-samples.git
+    subPath: tanzu-java-web-app

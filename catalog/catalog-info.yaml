@@ -1,0 +1,24 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: lazy-koala
+  description: Tanzu Java Spring-Boot Web App, displaying kubernetes info on '/k8s' endpoint. Written by Guy Balmas.
+  tags:
+  - App-Accelerator
+  - Java-11
+  - Spring
+  - Web
+  - Tanzu
+  - Kubernetes
+  annotations:
+    backstage.io/kubernetes-label-selector: app.kubernetes.io/part-of=lazy-koala
+    backstage.io/techdocs-ref: dir:.
+  links:
+  - url: http://lazy-koala.apps.tap-guy-lab-p8m8nm3rts18.ts-cna.com
+    name: Hello-World
+  - url: http://lazy-koala.apps.tap-guy-lab-p8m8nm3rts18.ts-cna.com/k8s
+    name: K8S-spec
+spec:
+  type: service
+  lifecycle: experimental
+  owner: cloud-native-applications-team
